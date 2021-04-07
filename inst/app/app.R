@@ -52,7 +52,7 @@ server <-
                          cliclickID = NULL)
 
 
-    roots = list( Home='~', root='/','Example' = exampleDir)
+    roots = list(root='/', Home=path.expand('~'),'Example' = exampleDir)
     if(Sys.info()['sysname']=='Windows'){
       volumes <- system("wmic logicaldisk get name", intern = T)
       volumes <- sub(" *\\r$", "", volumes)
