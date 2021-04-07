@@ -32,9 +32,9 @@
 #'
 Launch <- function(inputDir= NULL,
                    Interactive = FALSE){
-  exampleDir <- system.file('example', package = "xROI")
+  exampleFiles <- system.file('example', package = "xROI")
   tmpdir <- tempdir()
-  file.copy(exampleDir, tmpdir, recursive = T)
+  file.copy(exampleFiles, tmpdir, recursive = T)
   exampleDir <- normalizePath(file.path(tmpdir, 'example'))
   ## Only run examples in interactive R sessions
   if (interactive()|Interactive) {
