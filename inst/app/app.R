@@ -61,7 +61,8 @@ server <-
       keep <- !tolower(volumes) %in% c("name", "")
       volumes <- volumes[keep]
       names(volumes) <- volumes
-      roots <- c('Example'= exampleDir, Home=path.expand('~/../'), volumes)
+      #roots <- c('Example'= exampleDir, Home = path.expand('~/../'), volumes)
+      roots <- c('Example'= exampleDir, Home = path.expand('~'), volumes)
     }
 
     observe({
