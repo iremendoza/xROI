@@ -2,7 +2,10 @@ library(xROI)
 
 #ex_in_dir <- readLines(paste0(tempdir(), '/ex_in_dir.tmp')) #this is not working in Windows
 
-ex_in_dir <- readLines(file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp'))
+con <- file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp')
+encod <- readr::guess_encoding(con)$encoding
+#ex_in_dir <- readLines(file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp'))
+ex_in_dir <- readLines(con, encoding = encod)
 
 exampleDir <- ex_in_dir[1]
 inputDir <- ex_in_dir[2]
