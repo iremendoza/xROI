@@ -36,14 +36,14 @@ Launch <- function(inputDir= NULL,
   #exampleFiles <- "D:/Projects/xROI/inst/example"
   tmpdir <- normalizePath(tempdir(), winslash = "/")
   file.copy(exampleFiles, tmpdir, recursive = T)
-  exampleDir <- normalizePath(file.path(tmpdir, 'example'))
+  exampleDir <- normalizePath(file.path(tmpdir, 'example'), winslash = "/")
   ## Only run examples in interactive R sessions
   if (interactive()|Interactive) {
     # ui <- getUI()
     # server <- getServer(exampleDir, inputDir)
     # shinyApp(ui, server, options = list(launch.browser = TRUE))
     appDir <- system.file('app', package = "xROI")
-    writeLines(c(exampleDir, inputDir), file.path(tempdir(), 'ex_in_dir.tmp'))
+    writeLines(c(exampleDir, inputDir), file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp', fsep= "/"), sep = "/")
     shinyAppDir(appDir = appDir, options = list(launch.browser = TRUE))
   }else{
     print('This function requires an interactive R session!')
