@@ -43,7 +43,7 @@ Launch <- function(inputDir= NULL,
     # server <- getServer(exampleDir, inputDir)
     # shinyApp(ui, server, options = list(launch.browser = TRUE))
     appDir <- system.file('app', package = "xROI")
-    writeLines(c(exampleDir, inputDir), file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp', fsep= "/"), sep = "/")
+    writeLines(c(exampleDir, inputDir), file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp', fsep= "/")) #, sep = "/"
     shinyAppDir(appDir = appDir, options = list(launch.browser = TRUE))
   }else{
     print('This function requires an interactive R session!')
