@@ -35,6 +35,7 @@ Launch <- function(inputDir= NULL,
   exampleFiles <- system.file('example', package = "xROI")
   #exampleFiles <- "D:/Projects/xROI/inst/example"
   tmpdir <- normalizePath(tempdir(), winslash = "/")
+  Encoding(tmpdir) <- "UTF-8"
   file.copy(exampleFiles, tmpdir, recursive = T)
   exampleDir <- normalizePath(file.path(tmpdir, 'example'), winslash = "/")
   ## Only run examples in interactive R sessions
@@ -44,6 +45,8 @@ Launch <- function(inputDir= NULL,
     # shinyApp(ui, server, options = list(launch.browser = TRUE))
     appDir <- system.file('app', package = "xROI")
     writeLines(c(exampleDir, inputDir), file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp', fsep= "/")) #, sep = "/"
+    con <- file.path(normalizePath(tempdir(), winslash = "/"), 'ex_in_dir.tmp', fsep= "/")
+    encod <- readr::guess_encoding(con)$encoding
     shinyAppDir(appDir = appDir, options = list(launch.browser = TRUE))
   }else{
     print('This function requires an interactive R session!')
